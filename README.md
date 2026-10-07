@@ -127,3 +127,68 @@ Then run `php artisan migrate --seed`.
 ## Scope alignment
 
 The first version recognizes only the configured 18 classes. It does not claim to diagnose every plant disease, perform laboratory confirmation, determine pesticide dosage, or replace agricultural experts.
+
+## Advanced realtime workflow
+
+This source package includes a persistent notification system and a clearer prediction lifecycle:
+
+- `queued` -> `processing` -> `completed` / `failed`
+- PostgreSQL database queue for AI jobs
+- FastAPI + MobileNetV3 inference
+- Socket.IO realtime updates with a polling fallback
+- database-backed notification bell with unread count
+- retry support for failed AI jobs
+- confidence labels and low-confidence warning
+- disease cause, symptoms, prevention and recommended actions
+- feedback only after a completed prediction
+
+After updating an existing installation, run:
+
+```bash
+php artisan migrate
+php artisan db:seed --class=DiseaseSeeder
+php artisan optimize:clear
+```
+
+Recommended local `.env` values:
+
+```env
+CACHE_STORE=file
+QUEUE_CONNECTION=database
+AI_SERVICE_URL=http://127.0.0.1:8001
+AI_ALLOW_DEMO_FALLBACK=false
+REALTIME_SERVICE_URL=http://127.0.0.1:3001
+REALTIME_CLIENT_URL=http://127.0.0.1:3001
+```
+
+Start the four development processes in separate terminals:
+
+```bash
+# FastAPI
+cd ai-service
+.venv\Scripts\activate.bat
+python -m uvicorn main:app --reload --host 127.0.0.1 --port 8001
+
+# Socket.IO
+cd realtime-service
+node server.js
+
+# Laravel queue worker
+php artisan queue:work database --tries=2 --timeout=120 -vvv
+
+# Laravel web app
+php artisan serve
+```
+
+For final model evaluation, run `python evaluate.py` with an independent test set. The script writes Accuracy, Precision, Recall, F1-score, a classification report and a confusion matrix to `ai-service/evaluation/`.
+
+
+## Confidence interpretation
+
+AgroVision treats model confidence as a screening signal rather than a diagnosis. The default bands are:
+
+- **High:** 85% or above
+- **Moderate:** 65% to 84.9%
+- **Low:** below 65%
+
+If the top two model predictions are within 15 percentage points, the result page also shows a close-alternative warning. These values can be changed through `AI_CONFIDENCE_HIGH`, `AI_CONFIDENCE_LOW`, and `AI_AMBIGUITY_MARGIN`.
