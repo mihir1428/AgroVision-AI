@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Create account')
+@section('content')<section class="section"><div class="container narrow"><div class="panel"><h1>Create account</h1><form method="POST" action="{{ route('register') }}">@csrf<label>Name<input type="text" name="name" value="{{ old('name') }}" required></label><label>Email<input type="email" name="email" value="{{ old('email') }}" required></label><label>Password<input type="password" name="password" required minlength="8"></label><label>Confirm password<input type="password" name="password_confirmation" required></label><button class="btn full">Create account</button></form><p class="small">Already registered? <a href="{{ route('login') }}">Login</a></p></div></div></section>@endsection

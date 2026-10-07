@@ -1,0 +1,23 @@
+agrovision-laravel/
+├── app/
+│   ├── Http/Controllers/{Auth,Dashboard,Prediction,Feedback}.php
+│   ├── Http/Controllers/Admin/
+│   ├── Http/Controllers/Api/
+│   ├── Http/Middleware/AdminMiddleware.php
+│   ├── Models/
+│   └── Services/PlantDiseaseAiService.php
+├── ai-service/
+│   ├── main.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── classes.json
+│   └── requirements.txt
+├── config/
+├── database/{migrations,seeders,factories}/
+├── public/css/app.css
+├── resources/views/
+├── routes/{web,api,console}.php
+├── tests/Feature/
+├── .env.example
+├── composer.json
+└── README.md

@@ -1,0 +1,42 @@
+*.log
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+
+# PHP dependencies
+/vendor/
+
+# Node dependencies
+/node_modules/
+/realtime-service/node_modules/
+
+# Laravel generated files
+/public/storage
+/storage/*.key
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/app/public/leaf-scans/*
+/bootstrap/cache/*.php
+
+# Python environment/cache
+/ai-service/.venv/
+/ai-service/__pycache__/
+/ai-service/.pytest_cache/
+*.pyc
+
+# AI datasets
+/ai-service/dataset/
+/ai-service/dataset_medium/
+
+# Ignore backup model only
+/ai-service/models/agrovision_tiny_backup.keras
+
+# Local SQLite database
+/database/database.sqlite
+
+# ZIP / archive files
+*.zip

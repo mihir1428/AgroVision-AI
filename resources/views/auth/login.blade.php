@@ -1,0 +1,3 @@
+@extends('layouts.app')
+@section('title','Login')
+@section('content')<section class="section"><div class="container narrow"><div class="panel"><h1>Welcome back</h1><p>Login to scan leaves and review your history.</p><form method="POST" action="{{ route('login') }}">@csrf<label>Email<input type="email" name="email" value="{{ old('email') }}" required autofocus></label><label>Password<input type="password" name="password" required></label><label class="check"><input type="checkbox" name="remember" value="1"> Remember me</label><button class="btn full">Login</button></form><p class="small">No account? <a href="{{ route('register') }}">Register</a></p></div></div></section>@endsection
