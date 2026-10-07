@@ -1,0 +1,11 @@
+{
+  "test_images": 882,
+  "classes": 18,
+  "accuracy": 0.81859410430839,
+  "precision_macro": 0.840077860271893,
+  "recall_macro": 0.8203472222222222,
+  "f1_macro": 0.8156242872055431,
+  "precision_weighted": 0.841647655486894,
+  "recall_weighted": 0.81859410430839,
+  "f1_weighted": 0.8153600598307291
+}

@@ -60,8 +60,8 @@ class PlantDiseaseAiService
     }
     public function confidenceLabel(float $score): string
     {
-        if ($score >= config('services.ai.high_confidence', .75)) return 'High confidence';
-        if ($score >= config('services.ai.low_confidence', .50)) return 'Moderate confidence';
+        if ($score >= config('services.ai.high_confidence', .85)) return 'High confidence';
+        if ($score >= config('services.ai.low_confidence', .65)) return 'Moderate confidence';
         return 'Low confidence — upload another clear image';
     }
 }
