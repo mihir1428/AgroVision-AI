@@ -88,11 +88,6 @@
 
     @yield('content')
 </main>
-
-<footer>
-    <div class="container">AgroVision AI · SE-331 Project · AI results are preliminary screening only.</div>
-</footer>
-
 @auth
 <script src="{{ rtrim(config('services.realtime.client_url'), '/') }}/socket.io/socket.io.js"></script>
 <script>
