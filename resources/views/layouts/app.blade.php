@@ -90,7 +90,7 @@
 </main>
 
 <footer>
-    <div class="container">AgroVision AI · SE-331 Project · AI results are preliminary screening only.</div>
+    <div class="container">Dev by Md Moshiur Rahman</div>
 </footer>
 
 @auth
