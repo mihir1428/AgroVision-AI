@@ -37,6 +37,6 @@ Thumbs.db
 
 # Local SQLite database
 /database/database.sqlite
-
+.phpunit.result.cache
 # ZIP / archive files
 *.zip
