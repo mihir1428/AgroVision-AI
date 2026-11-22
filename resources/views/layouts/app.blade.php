@@ -88,11 +88,6 @@
 
     @yield('content')
 </main>
-
-<footer>
-    <div class="container">Dev by Md Moshiur Rahman</div>
-</footer>
-
 @auth
 <script src="{{ rtrim(config('services.realtime.client_url'), '/') }}/socket.io/socket.io.js"></script>
 <script>
